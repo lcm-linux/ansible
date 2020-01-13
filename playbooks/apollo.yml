@@ -1,0 +1,6 @@
+- name: Install apollo
+  hosts: apollo_hosts
+  remote_user: root
+  roles:
+  - apollo_install
+  tags: apollo

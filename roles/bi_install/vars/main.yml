@@ -1,0 +1,24 @@
+#application.yml
+app_isRun:  
+sysServer:  #系统管理服务的地址 
+cookie_key: 
+
+#biz.properties
+tomcatTmpPath:  # tomcat临时文件目录，该目录在启动后不能删除，不能是系统/tmp目录下，需要有创建权限
+basepath: #本地缓存目录
+export_path: #导出脚本所在位置
+web_path:  #前端域名
+service_path:  #后端域名
+
+#postgresql.properties
+jdbc_url:  jdbc:postgresql://192.168.94.35:5432/bi-tenant 
+jdbc_user: postgres
+jdbc_pass: baifendian
+
+#quartz.properties
+qzDS_url: jdbc:postgresql://192.168.94.35:5432/bi-quartz
+
+#storage.properties
+jdbc_address: 192.168.94.35:5432
+jdbc_dbName: bi-storage
+

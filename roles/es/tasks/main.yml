@@ -1,0 +1,73 @@
+- name: copy es software
+  copy: src={{ es_package_file }} dest=/tmp/ owner=root group=root
+- name: uncompression es software
+  shell: tar zxf /tmp/{{ es_package_file }} -C /opt
+- name: create es user
+  user: name=es
+- name: change owner and group
+  file: path={{ es_dir }} owner=es group=es #recurse=yes
+#下面注释不要删除，指不定什么时候用到
+#- name: unpack the elasticsearch file
+#  unarchive: src={{es_version}}.tar.gz dest=/opt copy=yes
+#- name: user check
+#  shell: cat /etc/passwd
+#  register: info
+#- name: user delete
+#  shell: userdel -rf es && rm -rf /var/spool/mail/es
+#  when: info.stdout.find('es') != -1
+#- name: es group check
+#  shell: cat /etc/group
+#  register: group_info
+#- name: group delete
+#  shell: groupdel es
+#  when: group_info.stdout.find('es') != -1
+#- name: create user
+#  shell: useradd es
+#- name: create soft link
+#  file: path=/opt/elasticsearch state=link src=/opt/{{es_version}}
+#- name: chown es dir
+#  shell:  |
+#    chown es:es {{es_dir}} -R
+#    chown -R es:es /opt/elasticsearch
+
+
+- name: copy es start script
+  template: src=start.sh dest={{ es_dir }}/ owner=es group=es mode=0755
+- name: copy es config
+  template: src=elasticsearch.yml dest={{ es_dir }}/config/ owner=es group=es
+- name: update es config
+  shell: sed -i '{{ item }}' {{ es_dir }}/config/{{ config_name }}
+  with_items:
+    - 's#node.master: #node.master: {{ node_master }}#g'
+    - 's#node.data: #node.data: {{ node_data }}#g'
+- name: mkdir directory for es data
+  file: dest={{ es_dir }} mode=0755 state=directory owner=es group=es
+  notify: mkdir Subdirectory
+
+- name: chown es dir
+  shell:  |
+    chown es:es {{es_dir}} -R
+    chown es:es {{es_package}} -R
+
+- name: copy env script to client
+  copy: src="env.sh" dest=/tmp
+- name: run env
+  shell: bash /tmp/env.sh
+- name: kill me
+  file: path=/tmp/env.sh state=absent
+
+- name: start es service
+  shell: |
+    cd {{ es_dir }} && ./start.sh
+- name: delete es compression files
+  shell: rm -f /tmp/{{ es_package_file }}
+
+- name: Check if Elasticsearch is accessible
+  wait_for:
+    host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+    port: 9200
+    state: started
+    delay: 15
+    #timeout时间一定要大于上面的delay时间，否则会出现错误的检测结果
+    timeout: 60
+    connect_timeout: 5

@@ -1,0 +1,26 @@
+- name: create screensystem bak dir
+  file: path={{screensystem_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup screensystem
+  shell: |
+    tar -zcvf {{screensystem_path}}_`date '+%Y_%m_%d'`.tar.gz {{screensystem_path}}/dist
+    mv {{screensystem_path}}_`date '+%Y_%m_%d'`.tar.gz {{screensystem_path}}/../bak
+    rm -rf {{screensystem_path}}/dist
+- name: copy screensystem package
+  unarchive: src={{screensystem_service}}.tar.gz dest={{screensystem_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/screensystem_dns_update.sh" dest={{screensystem_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start screensystem service
+  ignore_errors: True
+  shell: |
+    cd {{screensystem_path}}/dist/
+    /bin/sh screensystem_dns_update.sh

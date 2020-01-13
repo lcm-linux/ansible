@@ -1,0 +1,26 @@
+- name: create screencontrol bak dir
+  file: path={{screencontrol_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup screencontrol
+  shell: |
+    tar -zcvf {{screencontrol_path}}_`date '+%Y_%m_%d'`.tar.gz {{screencontrol_path}}/dist
+    mv {{screencontrol_path}}_`date '+%Y_%m_%d'`.tar.gz {{screencontrol_path}}/../bak
+    rm -rf {{screencontrol_path}}/dist
+- name: copy screencontrol package
+  unarchive: src={{screencontrol_service}}.tar.gz dest={{screencontrol_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/screencontrol_dns_update.sh" dest={{screencontrol_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start screencontrol service
+  ignore_errors: True
+  shell: |
+    cd {{screencontrol_path}}/dist/
+    /bin/sh screencontrol_dns_update.sh

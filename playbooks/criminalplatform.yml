@@ -1,0 +1,6 @@
+- name: Install criminalplatform
+  hosts: criminalplatform_hosts
+  remote_user: root
+  roles:
+  - criminalplatform_install
+  tags: criminalplatform

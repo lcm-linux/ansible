@@ -1,0 +1,60 @@
+# tasks file for nginx_install
+- name: scp the nginx file
+  copy: src={{nginx_version}}.rpm dest=/tmp owner=root group=root
+- name: install
+  shell: |
+    rpm -e {{nginx_version}}
+    rpm -ivh /tmp/{{nginx_version}}.rpm
+- name: clean
+  file: path=/tmp/{{nginx_version}} state=absent
+#- name: mkdir && chown
+#  shell: |
+#    mkdir -pv {{ck_log_dir}}
+#    chown -R nginx.nginx {{ck_log_dir}}
+- name: scp nginx conf.d
+  template: src={{ item.src }} dest=/etc/nginx/conf.d/{{ item.dest }} backup=yes owner=root group=root mode=0644
+  with_items:
+    - { src: alertevent.conf, dest: "{{nginx_begin}}-alertevent{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: analy.conf, dest: "{{nginx_begin}}-analy{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: archive.conf, dest: "{{nginx_begin}}-archive{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: bi.conf, dest: "{{nginx_begin}}-bi{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: case.conf, dest: "{{nginx_begin}}-case{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: comp.conf, dest: "{{nginx_begin}}-comp{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: controlledobject.conf, dest: "{{nginx_begin}}-controlledobject{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: deepfinder-conf.conf, dest: "deepfinder-conf{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: discover.conf, dest: "{{nginx_begin}}-discover{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: flowdesign.conf, dest: "{{nginx_begin}}-flowdesign{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: integratedpolice.conf, dest: "{{nginx_begin}}-integratedpolice{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: jbpm.conf, dest: "{{nginx_begin}}-jbpm{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: monitor.conf, dest: "{{nginx_begin}}-monitor{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: networkanalysis.conf, dest: "{{nginx_begin}}-networkanalysis{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: osscloud.conf, dest: "{{nginx_begin}}-osscloud{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: oss.conf, dest: "{{nginx_begin}}-oss{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: platform.conf, dest: "{{nginx_begin}}-platform{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: policestations.conf, dest: "{{nginx_begin}}-policestations{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: release.conf, dest: "{{nginx_begin}}-release{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: screen-control.conf, dest: "{{nginx_begin}}-screen-control{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: screen-control-sec.conf, dest: "{{nginx_begin}}-screen-control-sec{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: screen-system.conf, dest: "{{nginx_begin}}-screen-system{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: screen-web.conf, dest: "{{nginx_begin}}-screen-web{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: screen-web-sec.conf, dest: "{{nginx_begin}}-screen-web-sec{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: securitypolice.conf, dest: "{{nginx_begin}}-securitypolice{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: system.conf, dest: "{{nginx_begin}}-system{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: task.conf, dest: "{{nginx_begin}}-task{{nginx_mid}}.{{nginx_end}}.conf" }
+    - { src: xxljob.conf, dest: "{{nginx_begin}}-xxljob{{nginx_mid}}.{{nginx_end}}.conf" }
+
+- name: scp templates
+  template: src=templates/nginx_simple.conf dest=/etc/nginx/nginx.conf backup=yes
+  notify:
+  - restart service #notify”这个action可用于在每个play的最后被触发，这样可以避免多次有改变发生时每次都执行指定的操作
+- name: start
+  service: name=nginx state=started  enabled=yes
+- name: Check if Nginx is accessible
+  wait_for:
+    host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+    port: 80
+    state: started
+    delay: 5
+    #timeout时间一定要大于上面的delay时间，否则会出现错误的检测结果
+    timeout: 10
+    connect_timeout: 5

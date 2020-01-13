@@ -1,0 +1,26 @@
+- name: create comp bak dir
+  file: path={{comp_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup comp
+  shell: |
+    tar -zcvf {{comp_path}}_`date '+%Y_%m_%d'`.tar.gz {{comp_path}}/dist
+    mv {{comp_path}}_`date '+%Y_%m_%d'`.tar.gz {{comp_path}}/../bak
+    rm -rf {{comp_path}}/dist
+- name: copy comp package
+  unarchive: src={{comp_service}}.tar.gz dest={{comp_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/comp_dns_update.sh" dest={{comp_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start comp service
+  ignore_errors: True
+  shell: |
+    cd {{comp_path}}/dist/
+    /bin/sh comp_dns_update.sh

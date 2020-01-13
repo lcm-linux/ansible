@@ -1,0 +1,10 @@
+systemmanager:
+    config:
+        #是否启动登陆拦截器
+        isRun: {{app_isRun}}
+        #系统管理服务的地址
+        sysServer: {{sysServer}}
+        cookie_key: {{cookie_key}}
+        #哪些请求不需要进行拦截，多个已逗号分隔
+        exclusions: /tables-range,/dashboards-share,/charts-share,/share,/share-range,/biTest
+

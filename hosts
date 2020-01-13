@@ -1,0 +1,446 @@
+# This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
+
+# Ex 1: Ungrouped hosts, specify before any group headers.
+
+## green.example.com
+## blue.example.com
+## 192.168.100.1
+## 192.168.100.10
+
+# Ex 2: A collection of hosts belonging to the 'webservers' group
+
+## [webservers]
+## alpha.example.org
+## beta.example.org
+## 192.168.1.100
+## 192.168.1.110
+
+# If you have multiple hosts following a pattern you can specify
+# them like this:
+
+## www[001:006].example.com
+
+# Ex 3: A collection of database servers in the 'dbservers' group
+
+## [dbservers]
+##
+## db01.intranet.mydomain.net
+## db02.intranet.mydomain.net
+## 10.25.1.56
+## 10.25.1.57
+
+# Here's another example of host ranges, this time there are no
+# leading 0s:
+
+## db-[99:101]-node.example.com
+
+[local]
+172.24.0.45
+
+[remote]
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.49
+172.24.0.50
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+172.24.0.55
+172.24.0.56
+172.24.0.57
+172.24.0.58
+
+[all]
+172.24.0.45
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.49
+172.24.0.50
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+172.24.0.55
+172.24.0.56
+172.24.0.57
+172.24.0.58
+
+
+
+[tse]
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.49
+172.24.0.50
+172.24.0.51
+
+[ala]
+172.24.0.52
+172.24.0.53
+172.24.0.54
+172.24.0.55
+
+[another]
+172.24.0.55
+172.24.0.56
+172.24.0.57
+172.24.0.58
+
+
+[ssh_hosts]
+172.24.0.45 ansible_ssh_user="root" ansible_ssh_pass="deki71QR5X4=" ansible_ssh_port="3222"
+172.24.0.46 ansible_ssh_user="root" ansible_ssh_pass="Thm5YgSbcN4=" ansible_ssh_port="3222"
+172.24.0.47 ansible_ssh_user="root" ansible_ssh_pass="Ys1zbk0aZP8=" ansible_ssh_port="3222"
+172.24.0.48 ansible_ssh_user="root" ansible_ssh_pass="XbVV/IepZrY=" ansible_ssh_port="3222"
+172.24.0.49 ansible_ssh_user="root" ansible_ssh_pass="YaKAIc10tTg=" ansible_ssh_port="3222"
+172.24.0.50 ansible_ssh_user="root" ansible_ssh_pass="X8pRSsUZXh0=" ansible_ssh_port="3222"
+172.24.0.51 ansible_ssh_user="root" ansible_ssh_pass="rgodf0LROhQ=" ansible_ssh_port="3222"
+172.24.0.52 ansible_ssh_user="root" ansible_ssh_pass="S4Ry/lkIAdE=" ansible_ssh_port="3222"
+172.24.0.53 ansible_ssh_user="root" ansible_ssh_pass="OXQf0U453Vg=" ansible_ssh_port="3222"
+172.24.0.54 ansible_ssh_user="root" ansible_ssh_pass="etyAYEfkW7w=" ansible_ssh_port="3222"
+172.24.0.55 ansible_ssh_user="root" ansible_ssh_pass="/TCFmpqBSBk=" ansible_ssh_port="3222"
+172.24.0.56 ansible_ssh_user="root" ansible_ssh_pass="dbxRf+gRry0=" ansible_ssh_port="3222"
+172.24.0.57 ansible_ssh_user="root" ansible_ssh_pass="9QZxzj6ntII=" ansible_ssh_port="3222"
+172.24.0.58 ansible_ssh_user="root" ansible_ssh_pass="E4vwTzoH+80=" ansible_ssh_port="3222"
+
+[jdk_hosts]
+172.24.0.45
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.49
+172.24.0.50
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+172.24.0.55
+172.24.0.56
+172.24.0.57
+172.24.0.58
+
+[node_hosts]
+172.24.0.45
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.49
+172.24.0.50
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+172.24.0.55
+172.24.0.56
+172.24.0.57
+172.24.0.58
+
+[sys_opt_hosts]
+172.24.0.45
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.49
+172.24.0.50
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+172.24.0.55
+172.24.0.56
+172.24.0.57
+172.24.0.58
+
+[mysql_hosts]
+#172.24.0.45
+#172.24.0.51
+#172.24.0.55
+172.24.0.50
+
+[neo4j_hosts]
+172.24.0.52
+
+[es_tse_hosts]
+172.24.0.48 master="true" data="false" ingest="true"
+172.24.0.49 master="false" data="true" ingest="true"
+172.24.0.50 master="false" data="true" ingest="true"
+
+[es_ala_hosts]
+172.24.0.52 master="true" data="false" ingest="true"
+172.24.0.53 master="false" data="true" ingest="true"
+172.24.0.54 master="false" data="true" ingest="true"
+
+[es_query]
+172.24.0.46 master="true" data="true" ingest="true"
+172.24.0.47 master="false" data="true" ingest="true"
+
+[postgresql_hosts]
+#172.24.4.145
+
+[nginx_hosts]
+172.24.0.49
+
+[clickhouse_hosts]
+#172.24.4.144
+
+[zookeeper_hosts]
+#172.24.4.143 myid="1"
+#172.24.4.144 myid="2"
+#172.24.4.145 myid="3"
+
+[kafka_hosts]
+#172.24.0.48 brokerid="0"
+#172.24.0.49 brokerid="1"
+#172.24.0.50 brokerid="2"
+
+#172.24.0.52 brokerid="0"
+#172.24.0.53 brokerid="1"
+#172.24.0.54 brokerid="2"
+
+172.24.0.56 brokerid="0"
+172.24.0.57 brokerid="1"
+172.24.0.58 brokerid="2"
+
+
+
+
+
+[clickhouse_cluster_replica_hosts]
+#172.24.0.45 macros_shard="1" macros_replica='01'
+#172.24.0.46 macros_shard="1" macros_replica='02'
+#172.24.0.47 macros_shard="2" macros_replica='01'
+#172.24.0.48 macros_shard="2" macros_replica='02'
+
+172.24.0.51 macros_shard="1" macros_replica='01'
+172.24.0.52 macros_shard="1" macros_replica='02'
+172.24.0.53 macros_shard="2" macros_replica='01'
+172.24.0.54 macros_shard="2" macros_replica='02'
+
+
+[clickhouse_cluster_single_hosts]
+#192.168.162.101
+#192.168.162.102
+#192.168.162.103
+#192.168.162.104
+
+
+[clickhouse_all_hosts]
+172.24.0.45
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+
+
+[one_disk_mount]
+172.24.0.45
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.49
+172.24.0.50
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+172.24.0.55
+172.24.0.56
+172.24.0.57
+
+[host_name]
+172.24.0.45 host_name=platform-server-1
+172.24.0.46 host_name=platform-server-2
+172.24.0.47 host_name=platform-server-3
+172.24.0.48 host_name=platform-server-4
+172.24.0.49 host_name=platform-server-5
+172.24.0.50 host_name=platform-server-6
+172.24.0.51 host_name=platform-server-7
+172.24.0.52 host_name=platform-server-8
+172.24.0.53 host_name=platform-server-9
+172.24.0.54 host_name=platform-server-10
+172.24.0.55 host_name=platform-server-11
+172.24.0.56 host_name=platform-server-12
+172.24.0.57 host_name=platform-server-13
+172.24.0.58 host_name=platform-server-14
+
+
+
+[ntp_hosts]
+172.24.0.45
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.49
+172.24.0.50
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+172.24.0.55
+172.24.0.56
+172.24.0.57
+172.24.0.58
+
+[kibana_hosts]
+172.24.0.45
+
+[sftp_hosts]
+172.24.0.52
+
+[keepalived_hosts]
+172.24.0.52
+172.24.0.53
+
+[keepalived_proxy_hosts]
+172.24.0.52
+172.24.0.53
+
+[lvs_hosts]
+172.24.0.52
+172.24.0.53
+
+[logstash_tse_hosts]
+172.24.0.49
+172.24.0.50
+
+[logstash_ala_hosts]
+172.24.0.53
+172.24.0.54
+
+[logstash_other_hosts]
+172.24.0.57
+172.24.0.58
+
+
+[kafkamanager_hosts]
+172.24.0.51
+
+[grafana_hosts]
+172.24.0.50
+
+[prometheus_hosts]
+172.24.0.50
+
+[zabbix_agent1]
+172.24.0.45
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.49
+172.24.0.50
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+172.24.0.55
+172.24.0.56
+172.24.0.57
+172.24.0.58
+
+[zabbix_agent2]
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+
+[zabbix_agent3]
+172.24.0.55
+172.24.0.56
+172.24.0.57
+172.24.0.58
+
+[zabbix_server]
+172.24.0.46
+
+[zabbix_proxy]
+172.24.0.55
+
+[node_export_hosts]
+172.24.0.45
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.49
+172.24.0.50
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+172.24.0.55
+172.24.0.56
+172.24.0.57
+172.24.0.58
+
+[clickhouse_export_hosts]
+172.24.0.45
+172.24.0.46
+172.24.0.47
+172.24.0.48
+172.24.0.51
+172.24.0.52
+172.24.0.53
+172.24.0.54
+
+
+
+[oss_hosts]
+#172.24.0.50
+#172.24.0.53
+172.24.0.57
+
+[clickhouse_distribute_cluster_hosts]
+172.24.0.49
+172.24.0.50
+
+[cerebro_hosts]
+172.24.0.45
+
+[redis_hosts]
+172.24.0.56
+172.24.0.57
+172.24.0.58
+
+[dataflow_kafka2ck_hosts]
+172.24.0.56
+
+[dataflow_httpcontent_hosts]
+172.24.0.43
+
+[dataflow_content2es_hosts]
+172.24.0.43
+
+[dataflow_content2kafka_hosts]
+172.24.0.43
+
+[dataflow_message2kafka_hosts]
+172.24.0.51
+
+[dataflow_kafka2es_hosts]
+172.24.0.51
+
+[dataflow_kafka2ck_test_hosts]
+172.24.0.51
+
+
+[es_servers]
+172.24.9.40  node_master=true node_data=true
+172.24.9.41  node_master=true node_data=true
+172.24.9.42  node_master=true node_data=true
+
+[es_plugin_head]
+172.24.9.42

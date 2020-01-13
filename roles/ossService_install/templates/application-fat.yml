@@ -1,0 +1,6 @@
+apollo:
+  meta: {{apollo_path}}
+systemmanager:
+  config:
+      #是否启动登陆拦截器
+      isRun: true

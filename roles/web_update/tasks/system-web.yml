@@ -1,0 +1,30 @@
+- name: create system bak dir
+  file: path={{system_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup system
+  shell: |
+    tar -zcvf {{system_path}}_`date '+%Y_%m_%d'`.tar.gz {{system_path}}/dist
+    mv {{system_path}}_`date '+%Y_%m_%d'`.tar.gz {{system_path}}/../bak
+    rm -rf {{system_path}}/dist
+- name: copy system package
+  unarchive: src={{system_service}}.tar.gz dest={{system_path}}
+- name:
+  shell:
+    sleep 5
+#- name: change system profile
+#  lineinfile: 
+#    path: "{{system_path}}/dist/install.sh" 
+#    regexp: '^(.*)http(.*)'
+#    line: 'commonConfigUrl="http://k007-te.baifendian.com/api/securitypolice"'
+#    backrefs: yes
+- name: copy templates
+  template: src="templates/system_dns_update.sh" dest={{system_path}}/dist owner=k007 group=k007 mode=0644
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start system service
+  ignore_errors: True
+  shell: |
+    cd {{system_path}}/dist/
+    /bin/sh system_dns_update.sh

@@ -1,0 +1,6 @@
+- name: Install recognition
+  hosts: recognition_hosts
+  remote_user: root
+  roles:
+  - recognition_install
+  tags: recognition

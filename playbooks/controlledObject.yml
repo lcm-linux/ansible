@@ -1,0 +1,6 @@
+- name: Install controlledObject
+  hosts: controlledObject_hosts
+  remote_user: root
+  roles:
+  - controlledObject_install
+  tags: controlledObject

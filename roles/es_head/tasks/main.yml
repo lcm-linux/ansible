@@ -1,0 +1,27 @@
+#- name: copy node software
+#  copy: src={{ node_package_file }} dest=/tmp/ owner=root group=root
+#- name: uncompression node software
+#  shell: tar zxf /tmp/{{ node_package_file }} -C /usr/local/
+#- name: copy node to env
+#  shell: rsync -a {{ node_dir  }}/bin/* /usr/bin/
+- name: copy head plugin software
+  copy: src={{ head_package_file }} dest=/tmp/ owner=root group=root
+- name: uncopmression head plugin software
+  shell: tar zxf /tmp/{{ head_package_file }} -C /opt/
+- name: copy head config_1
+  template: src=site_app.js dest={{ head_dir }}/_site/app.js owner=es group=es
+
+- name: copy head config_2
+  template: src=src_app.js dest={{ head_dir }}/src/app/app.js owner=es group=es
+
+- name: copy head config_3
+  template: src=Gruntfile.js dest={{ head_dir }}/Gruntfile.js owner=es group=es
+
+- name: change owner and group
+  file: path={{ head_dir }} owner=es group=es recurse=yes
+- name: start es service
+  shell: su es -c 'cd {{ head_dir }} && npm run start > {{ head_dir }}/run.log &'
+#- name: delete node compression files
+#  shell: rm -f /tmp/{{ node_package_file }}
+- name: delete head compression files
+  shell: rm -f /tmp/{{ head_package_file }}

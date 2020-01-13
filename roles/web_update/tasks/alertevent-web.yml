@@ -1,0 +1,26 @@
+- name: create eventwarning bak dir
+  file: path={{eventwarning_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup eventwarning
+  shell: |
+    tar -zcvf {{eventwarning_path}}_`date '+%Y_%m_%d'`.tar.gz {{eventwarning_path}}/dist
+    mv {{eventwarning_path}}_`date '+%Y_%m_%d'`.tar.gz {{eventwarning_path}}/../bak
+    rm -rf {{eventwarning_path}}/dist
+- name: copy eventwarning package
+  unarchive: src={{eventwarning_service}}.tar.gz dest={{eventwarning_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/eventwarning_dns_update.sh" dest={{eventwarning_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start eventwarning service
+  ignore_errors: True
+  shell: |
+    cd {{eventwarning_path}}/dist/
+    /bin/sh eventwarning_dns_update.sh

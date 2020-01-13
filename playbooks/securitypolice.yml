@@ -1,0 +1,6 @@
+- name: Install securitypolice
+  hosts: securitypolice_hosts
+  remote_user: root
+  roles:
+  - securitypolice_install
+  tags: securitypolice

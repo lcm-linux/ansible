@@ -1,0 +1,32 @@
+- name: create bi bak dir
+  file: path={{bi_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup bi
+  shell: |
+    tar -zcvf {{bi_path}}_`date '+%Y_%m_%d'`.tar.gz {{bi_path}}/dist
+    mv {{bi_path}}_`date '+%Y_%m_%d'`.tar.gz {{bi_path}}/../bak
+    rm -rf {{bi_path}}/dist
+- name: copy bi package
+  unarchive: src={{bi_service}}.tar.gz dest={{bi_path}}
+- name:
+  shell:
+    sleep 5
+
+#- name: replace bi profile
+#  replace:
+#    path: "{{bi_path}}/dist/install.sh"
+#    regexp: "k007-te.baifendian.com"
+#    replace: "da.cisp.com"
+#    backup: yes
+- name: copy templates
+  template: src="templates/bi_dns_update.sh" dest={{bi_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start bi service
+  ignore_errors: True
+  shell: |
+    cd {{bi_path}}/dist/
+    /bin/sh bi_dns_update.sh

@@ -1,0 +1,5 @@
+apollo:
+  meta: {{apollo_path}} #apollo具体地址,不同环境地址不同,详情请见附录
+systemmanager:
+  config:
+    isRun: true

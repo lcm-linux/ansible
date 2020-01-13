@@ -1,0 +1,6 @@
+- name: Install portal
+  hosts: portal_hosts
+  remote_user: root
+  roles:
+  - portal_install
+  tags: portal

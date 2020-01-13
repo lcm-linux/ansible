@@ -1,0 +1,6 @@
+- name: Install warehoureService
+  hosts: warehoureService_hosts
+  remote_user: root
+  roles:
+  - warehoureService_install
+  tags: warehoureService

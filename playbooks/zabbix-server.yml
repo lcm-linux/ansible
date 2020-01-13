@@ -1,0 +1,6 @@
+- name: Install zabbix-server
+  hosts: zabbix_server
+  remote_user: root
+  roles:
+  - zabbix-server_install
+  tags: zabbix-server

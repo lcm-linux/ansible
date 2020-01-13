@@ -1,0 +1,7 @@
+- name: Update Web
+  hosts: web_update_hosts
+  gather_facts: false
+  remote_user: root
+  roles:
+   - web_update
+  tags: web_update

@@ -1,0 +1,4 @@
+apollo_service_ip: 172.24.9.40 #apollo服务地址
+ip_db: 172.24.4.170 #数据库的地址
+user_db: root #数据库用户名
+password_db: k19k19 #数据库密码 

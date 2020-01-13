@@ -1,0 +1,6 @@
+- name: node_export_install
+  hosts: node_export_hosts
+  remote_user: root
+  roles:
+  - node_export_install
+  tags: node_export_install

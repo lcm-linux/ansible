@@ -1,0 +1,2 @@
+head_package_file: elasticsearch-head.tar.gz
+head_dir: /opt/elasticsearch-head

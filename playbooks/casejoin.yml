@@ -1,0 +1,6 @@
+- name: Install casejoin
+  hosts: casejoin_hosts
+  remote_user: root
+  roles:
+  - casejoin_install
+  tags: casejoin

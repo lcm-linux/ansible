@@ -1,0 +1,26 @@
+- name: create controlledbject bak dir
+  file: path={{controlledbject_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup controlledbject
+  shell: |
+    tar -zcvf {{controlledbject_path}}_`date '+%Y_%m_%d'`.tar.gz {{controlledbject_path}}/dist
+    mv {{controlledbject_path}}_`date '+%Y_%m_%d'`.tar.gz {{controlledbject_path}}/../bak
+    rm -rf {{controlledbject_path}}/dist
+- name: copy controlledbject package
+  unarchive: src={{controlledbject_service}}.tar.gz dest={{controlledbject_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/controlledbject_dns_update.sh" dest={{controlledbject_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start controlledbject service
+  ignore_errors: True
+  shell: |
+    cd {{controlledbject_path}}/dist/
+    /bin/sh controlledbject_dns_update.sh

@@ -1,0 +1,6 @@
+- name: Install flowdesign
+  hosts: flowdesign_hosts
+  remote_user: root
+  roles:
+  - flowdesign_install
+  tags: flowdesign

@@ -1,0 +1,42 @@
+- name: create information bak dir
+  file: path={{information_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup information
+  shell: |
+    tar -zcvf {{information_path}}_`date '+%Y_%m_%d'`.tar.gz {{information_path}}/dist
+    mv {{information_path}}_`date '+%Y_%m_%d'`.tar.gz {{information_path}}/../bak
+    rm -rf {{information_path}}/dist
+- name: copy information package
+  unarchive: src={{information_service}}.tar.gz dest={{information_path}}
+- name:
+  shell:
+    sleep 5
+
+
+- name: change information profile-index.html
+  lineinfile: 
+    path: "{{information_path}}/dist/index.html" 
+    regexp: '^(.*)TASK_MANAGE_URL(.*)'
+    line: "\    const TASK_MANAGE_URL = 'http://{{new_task_dns}}/teamwork/project';"
+    backrefs: yes
+
+- name: replace information profile-app.js
+  replace:
+    path: "{{information_path}}/dist/app.js"
+    regexp: "{{pe_dns}}"
+    replace: "{{new_dns}}"
+    backup: yes
+
+
+#- name: copy templates
+#  template: src="templates/information_dns_update.py" dest={{information_path}}/ owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+#- name: start information service
+#  ignore_errors: True
+#  shell: |
+#    cd {{information_path}}/
+#    python information_dns_update.py dist http://{{new_dns}}

@@ -1,0 +1,3 @@
+apollo_path: http://172.24.9.40:21002 #apollo后端地址
+cacheDir: /opt/k007/service-config #缓存目录
+wordcloud: http://192.168.67.39:9018/NER_cloud

@@ -1,0 +1,40 @@
+- name: create integratedpolice bak dir
+  file: path={{integratedpolice_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup integratedpolice
+  shell: |
+    tar -zcvf {{integratedpolice_path}}_`date '+%Y_%m_%d'`.tar.gz {{integratedpolice_path}}/dist
+    mv {{integratedpolice_path}}_`date '+%Y_%m_%d'`.tar.gz {{integratedpolice_path}}/../bak
+    rm -rf {{integratedpolice_path}}/dist
+- name: copy integratedpolice package
+  unarchive: src={{integratedpolice_service}}.tar.gz dest={{integratedpolice_path}}
+- name:
+  shell:
+    sleep 5
+
+#- name: replace integratedpolice profile
+#  replace:
+#    path: "{{integratedpolice_path}}/dist/install.sh"
+#    regexp: "k007-te.baifendian.com"
+#    replace: "da.cisp.com"
+#    backup: yes
+
+#- name: change integratedpolice profile
+#  lineinfile: 
+#    path: "{{integratedpolice_path}}/dist/index.html" 
+#    regexp: '^(.*)https(.*)'
+#    state: absent
+#    backrefs: yes
+#    backup: yes
+
+- name: copy templates
+  template: src="templates/integratedpolice_dns_update.sh" dest={{integratedpolice_path}}/dist owner=k007 group=k007 mode=0644
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start integratedpolice service
+  ignore_errors: True
+  shell: |
+    cd {{integratedpolice_path}}/dist/
+    /bin/sh integratedpolice_dns_update.sh

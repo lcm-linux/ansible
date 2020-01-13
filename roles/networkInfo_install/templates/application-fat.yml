@@ -1,0 +1,6 @@
+apollo:
+  meta: {{apollo_path}}
+
+systemmanager:
+  config:
+    isRun: true

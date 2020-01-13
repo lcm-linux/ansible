@@ -1,0 +1,18 @@
+#ES集群名称
+cluster_name: test-cluster
+#ES部署包名，需要注意的是此包已经是做好软连接后的包，如需更改版本，请做好软连后重新打包，再更改此处名称
+es_package_file: elasticsearch-5.2.2.tar.gz
+#ES具体的包名，与上述名称保持一致即可
+es_package: /opt/elasticsearch-5.2.2
+#ES工作路径。基本默认，按需更改
+es_dir: /opt/elasticsearch
+#ES配置文件
+config_name: elasticsearch.yml
+#ES数据目录地址
+path_data: /opt/elasticsearch/data/
+#ES日志地址
+path_logs: /opt/elasticsearch/logs/
+#ES连接节点，只写主节点即可，host 或者 host:port
+unicast_hosts: '["172.24.9.40:9300","172.24.9.41:9300","172.24.9.42:9300"]'
+#集群允许最多的主节点数量，按需修改
+minimum_master_nodes: 1

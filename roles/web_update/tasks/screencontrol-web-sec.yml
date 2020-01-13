@@ -1,0 +1,26 @@
+- name: create screencontrol_sec bak dir
+  file: path={{screencontrol_sec_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup screencontrol_sec
+  shell: |
+    tar -zcvf {{screencontrol_sec_path}}_`date '+%Y_%m_%d'`.tar.gz {{screencontrol_sec_path}}/dist
+    mv {{screencontrol_sec_path}}_`date '+%Y_%m_%d'`.tar.gz {{screencontrol_sec_path}}/../bak
+    rm -rf {{screencontrol_sec_path}}/dist
+- name: copy screencontrol_sec package
+  unarchive: src={{screencontrol_sec_service}}.tar.gz dest={{screencontrol_sec_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/screencontrol_sec_dns_update.sh" dest={{screencontrol_sec_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start screencontrol_sec service
+  ignore_errors: True
+  shell: |
+    cd {{screencontrol_sec_path}}/dist/
+    /bin/sh screencontrol_sec_dns_update.sh

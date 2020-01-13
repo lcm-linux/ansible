@@ -1,0 +1,9 @@
+multipart:
+    maxFileSize: 50Mb
+    maxRequestSize: 60Mb
+logging:
+    level: debug
+
+apollo:
+  meta: {{apollo_path}}
+

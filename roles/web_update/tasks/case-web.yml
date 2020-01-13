@@ -1,0 +1,26 @@
+- name: create casejoin bak dir
+  file: path={{casejoin_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup casejoin
+  shell: |
+    tar -zcvf {{casejoin_path}}_`date '+%Y_%m_%d'`.tar.gz {{casejoin_path}}/dist
+    mv {{casejoin_path}}_`date '+%Y_%m_%d'`.tar.gz {{casejoin_path}}/../bak
+    rm -rf {{casejoin_path}}/dist
+- name: copy casejoin package
+  unarchive: src={{casejoin_service}}.tar.gz dest={{casejoin_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/casejoin_dns_update.sh" dest={{casejoin_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start casejoin service
+  ignore_errors: True
+  shell: |
+    cd {{casejoin_path}}/dist/
+    /bin/sh casejoin_dns_update.sh

@@ -1,0 +1,64 @@
+---
+
+############################
+#   service roles list     #
+############################
+#                          #
+# apollo_install           #
+# system_install           #
+# securitypolice_install   #
+# configService_install    #
+# portal_install           #
+# information_install      #
+# projectManager_install   #
+# bi_install               #  
+# criminalplatform_install #
+# compservice_install      #
+# infopublish_install      #
+# recognition_install      #
+# networkInfo_install      #
+# eventwarning_install     #
+# personControl_install    #
+# casejoin_install         #
+# archiveservice_install   #
+# flowdesign_install       #
+# ossService_install       #
+# controlledObject_install #
+# dailyreport_install      #
+# xxlJob_install           #
+# warehoureService_install #
+#                          #
+############################
+
+- name: Install 01
+  hosts: service01_hosts
+  roles:
+#    - system_install
+#    - securitypolice_install
+#    - configService_install
+#    - portal_install      
+    - information_install   
+    - projectManager_install
+#    - bi_install
+- name: Install 02
+  hosts: service02_hosts
+  roles:
+    - criminalplatform_install
+    - compservice_install
+    - infopublish_install
+    - recognition_install
+    - networkInfo_install
+    - eventwarning_install
+    - personControl_install
+    - casejoin_install
+- name: Install 03
+  hosts: service03_hosts
+  roles:
+    - archiveservice_install
+    - flowdesign_install
+    - ossService_install
+    - controlledObject_install
+    - dailyreport_install
+    - xxlJob_install
+    - warehoureService_install
+

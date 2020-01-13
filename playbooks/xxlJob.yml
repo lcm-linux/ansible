@@ -1,0 +1,6 @@
+- name: Install xxlJob
+  hosts: xxlJob_hosts
+  remote_user: root
+  roles:
+  - xxlJob_install
+  tags: xxlJob

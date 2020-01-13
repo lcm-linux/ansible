@@ -1,0 +1,7 @@
+apollo_path: http://172.24.9.40:21002
+#apollo后端地址
+ip_db: 172.24.9.40
+port_db: 3306
+user_db: root
+password_db: k007k007
+xxljob_addr: 

@@ -1,0 +1,6 @@
+- name: raid config
+  hosts: "{{hosts}}"
+  remote_user: root
+  roles:
+  - raid_config
+  tags: raid_config

@@ -1,0 +1,6 @@
+- name: mkdir Subdirectory
+#如果数据目录和日志目录与部署路径不在同一块盘，此处需要更改路径为具体地址
+  file: dest=/opt/elasticsearch/{{ item }} mode=0755 state=directory owner=es group=es
+  with_items:
+    - logs
+    - data

@@ -1,0 +1,6 @@
+- name: Install eventwarning
+  hosts: eventwarning_hosts
+  remote_user: root
+  roles:
+  - eventwarning_install
+  tags: eventwarning

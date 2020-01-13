@@ -1,0 +1,26 @@
+- name: create personcontrol bak dir
+  file: path={{personcontrol_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup personcontrol
+  shell: |
+    tar -zcvf {{personcontrol_path}}_`date '+%Y_%m_%d'`.tar.gz {{personcontrol_path}}/dist
+    mv {{personcontrol_path}}_`date '+%Y_%m_%d'`.tar.gz {{personcontrol_path}}/../bak
+    rm -rf {{personcontrol_path}}/dist
+- name: copy personcontrol package
+  unarchive: src={{personcontrol_service}}.tar.gz dest={{personcontrol_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/personcontrol_dns_update.sh" dest={{personcontrol_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start personcontrol service
+  ignore_errors: True
+  shell: |
+    cd {{personcontrol_path}}/dist/
+    /bin/sh personcontrol_dns_update.sh

@@ -1,0 +1,6 @@
+- name: Install configService
+  hosts: configService_hosts
+  remote_user: root
+  roles:
+  - configService_install
+  tags: configService

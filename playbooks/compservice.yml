@@ -1,0 +1,6 @@
+- name: Install compservice
+  hosts: compservice_hosts
+  remote_user: root
+  roles:
+  - compservice_install
+  tags: compservice

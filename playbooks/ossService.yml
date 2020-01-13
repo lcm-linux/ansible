@@ -1,0 +1,6 @@
+- name: Install ossService
+  hosts: ossService_hosts
+  remote_user: root
+  roles:
+  - ossService_install
+  tags: ossService

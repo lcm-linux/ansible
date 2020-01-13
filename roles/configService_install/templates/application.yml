@@ -1,0 +1,40 @@
+management:
+  security:
+    enable: false
+  health:
+    elasticsearch:
+      enabled: false
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+    min-response-size: 2048
+
+spring:
+  # 环境 dev|test|pro
+  profiles:
+    active: fat
+  page:
+      size: 50
+  http:
+      multipart:
+      enabled: true
+      max-file-size: 128MB
+      max-request-size: 128MB
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    com.bfd.onto.mapper: DEBUG
+
+#配置中心配置
+apollo:
+  bootstrap:
+    enabled: true
+    namespaces: application,k007.dubbo,k007.mysql,k007.elasticsearch,k007.mysqlUpload,k007.configCenter,k007.redis
+  cacheDir: {{cacheDir}}
+app:
+  id: k007-configCenter

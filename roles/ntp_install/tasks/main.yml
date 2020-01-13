@@ -1,0 +1,15 @@
+# tasks file for hosts
+- name: set timezone
+  shell: timedatectl set-timezone {{timezone}}
+- name: install ntp_install
+  shell: yum -y install ntp
+- name: stop all ntp_install server
+  shell: systemctl stop ntpd && systemctl disable ntpd
+- name: add crontab
+  cron: name='syn time' minute=*/1 job='/usr/sbin/ntpdate -u {{ntp_server}} ; /usr/sbin/hwclock -w'
+- name: reload crond.service
+  shell: systemctl reload crond.service
+- name: start ntp server
+  shell: systemctl start ntpd && systemctl enable ntpd
+  run_once: true
+  delegate_to: "{{ntp_server}}"

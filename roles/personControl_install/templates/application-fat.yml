@@ -1,0 +1,7 @@
+# 配置中心地址，配置中心启用时生效
+apollo:
+  meta: {{apollo_path}}
+
+systemmanager:
+  config:
+    isRun: true

@@ -1,0 +1,26 @@
+- name: create portal bak dir
+  file: path={{portal_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup portal
+  shell: |
+    tar -zcvf {{portal_path}}_`date '+%Y_%m_%d'`.tar.gz {{portal_path}}/dist
+    mv {{portal_path}}_`date '+%Y_%m_%d'`.tar.gz {{portal_path}}/../bak
+    rm -rf {{portal_path}}/dist
+- name: copy portal package
+  unarchive: src={{portal_service}}.tar.gz dest={{portal_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/portal_dns_update.sh" dest={{portal_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start portal service
+  ignore_errors: True
+  shell: |
+    cd {{portal_path}}/dist/
+    /bin/sh portal_dns_update.sh

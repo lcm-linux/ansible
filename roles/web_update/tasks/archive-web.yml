@@ -1,0 +1,26 @@
+- name: create archive bak dir
+  file: path={{archive_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup archive
+  shell: |
+    tar -zcvf {{archive_path}}_`date '+%Y_%m_%d'`.tar.gz {{archive_path}}/dist
+    mv {{archive_path}}_`date '+%Y_%m_%d'`.tar.gz {{archive_path}}/../bak
+    rm -rf {{archive_path}}/dist
+- name: copy archive package
+  unarchive: src={{archive_service}}.tar.gz dest={{archive_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/archive_dns_update.sh" dest={{archive_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start archive service
+  ignore_errors: True
+  shell: |
+    cd {{archive_path}}/dist/
+    /bin/sh archive_dns_update.sh

@@ -1,0 +1,6 @@
+- name: Install bi
+  hosts: bi_hosts
+  remote_user: root
+  roles:
+  - bi_install
+  tags: bi

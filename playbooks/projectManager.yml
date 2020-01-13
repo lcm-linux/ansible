@@ -1,0 +1,6 @@
+- name: Install projectManager
+  hosts: projectManager_hosts
+  remote_user: root
+  roles:
+  - projectManager_install
+  tags: projectManager

@@ -1,0 +1,26 @@
+- name: create recognition bak dir
+  file: path={{recognition_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup recognition
+  shell: |
+    tar -zcvf {{recognition_path}}_`date '+%Y_%m_%d'`.tar.gz {{recognition_path}}/dist
+    mv {{recognition_path}}_`date '+%Y_%m_%d'`.tar.gz {{recognition_path}}/../bak
+    rm -rf {{recognition_path}}/dist
+- name: copy recognition package
+  unarchive: src={{recognition_service}}.tar.gz dest={{recognition_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/recognition_dns_update.sh" dest={{recognition_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start recognition service
+  ignore_errors: True
+  shell: |
+    cd {{recognition_path}}/dist/
+    /bin/sh recognition_dns_update.sh

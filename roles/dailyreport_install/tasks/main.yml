@@ -1,0 +1,42 @@
+---
+# tasks file for install
+- name: mkdir
+  shell: mkdir -p /opt/k007
+- name: unpack the  file
+  unarchive: src=/etc/ansible/files/tomcat-dailyreport48889.tar.gz dest=/opt/k007 copy=yes
+- name:  user check
+  shell: cat /etc/passwd
+  register: info
+- name: user delete
+  shell: userdel -rf k007  && rm -rf /var/spool/mail/k007
+  when: info.stdout.find('k007') != -1
+#- name:  group check
+#  shell: cat /etc/group
+#  register: group_info
+#- name: group delete
+#  shell: groupdel k007
+#  when: group_info.stdout.find('k007') != -1
+#  shell: userdel -rf k007 && rm -rf /var/spool/mail/k007
+#  when: info.stdout.find('k007') != -1
+- name: create user
+  shell: useradd k007
+- name: install
+  shell: |
+    chown -R k007:k007 /opt/k007
+- name: config
+  template: src=templates/application-fat.yml dest=/opt/k007/tomcat-dailyreport48889/webapps/ROOT/WEB-INF/classes/application-fat.yml owner=root group=root mode=0644
+- name: chown && start
+  shell: |
+    chown -R k007:k007 /opt/k007
+    su - k007 -c "sh /opt/k007/tomcat-dailyreport48889/bin/startup.sh "
+- name: Check if system  is accessible
+  wait_for:
+    host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+    port: 48889
+    state: started
+    delay: 10
+#timeout时间一定要大于上面的delay时间，否则会出现错误的检测结果
+    timeout: 60
+    connect_timeout: 5
+
+

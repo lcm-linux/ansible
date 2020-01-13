@@ -1,0 +1,48 @@
+---
+# tasks file for install
+- name: mkdir
+  shell: mkdir -p /opt/k007
+- name: unpack the  file
+  unarchive: src=/etc/ansible/files/bi-service.tar.gz dest=/opt/k007 copy=yes
+- name:  user check
+  shell: cat /etc/passwd
+  register: info
+- name: user delete
+  shell: userdel -rf k007  && rm -rf /var/spool/mail/k007
+  when: info.stdout.find('k007') != -1
+#- name:  group check
+#  shell: cat /etc/group
+#  register: group_info
+#- name: group delete
+#  shell: groupdel k007
+#  when: group_info.stdout.find('k007') != -1
+#  shell: userdel -rf k007 && rm -rf /var/spool/mail/k007
+#  when: info.stdout.find('k007') != -1
+- name: create user
+  shell: useradd k007
+- name: install
+  shell: |
+    chown -R k007:k007 /opt/k007
+- name: config-application.yml
+  template: src=templates/application.yml dest=/opt/k007/bi-service/conf/application.yml owner=root group=root mode=0644
+- name: config-biz.properties  template: src=templates/biz.properties dest=/opt/k007/bi-service/conf/biz.properties owner=root group=root mode=0644
+- name: config-quartz.properties  template: src=templates/quartz.properties dest=/opt/k007/bi-service/conf/quartz.properties owner=root group=root mode=0644
+- name: config-postgresql.properties  template: src=templates/postgresql.properties dest=/opt/k007/bi-service/conf/dao/postgresql.properties owner=root group=root mode=0644
+- name: config-storage.properties  template: src=templates/storage.properties dest=/opt/k007/bi-service/conf/dao/storage.properties owner=root group=root mode=0644
+
+
+- name: chown && start
+  shell: |
+    chown -R k007:k007 /opt/k007
+    su - k007 -c "sh /opt/k007/bi-service/bin/start.sh "
+- name: Check if system  is accessible
+  wait_for:
+    host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+    port: 18880
+    state: started
+    delay: 10
+#timeout时间一定要大于上面的delay时间，否则会出现错误的检测结果
+    timeout: 60
+    connect_timeout: 5
+
+

@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1a4637bb-7e4e-4c7f-af87-e1ecda6208e7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manual/K19平台自动化部署v1.2.docx" beforeDir="false" afterPath="$PROJECT_DIR$/manual/K19平台自动化部署v1.2.docx" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1TrccdYtKY5kYC8Cji2ZKcs5v9h" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/roles/clickhouse_export_install/files" />
+      <recent name="$PROJECT_DIR$/roles/node_export_install/files" />
+      <recent name="$PROJECT_DIR$/roles/prometheus_install/templates" />
+      <recent name="$PROJECT_DIR$/roles/prometheus_install/files" />
+      <recent name="$PROJECT_DIR$/roles/grafana_install/templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/roles/dataflow_kafka2es" />
+      <recent name="$PROJECT_DIR$/roles/dataflow_kafka2es/templates" />
+      <recent name="$PROJECT_DIR$/roles/dataflow_kafka2es/files" />
+      <recent name="$PROJECT_DIR$/roles" />
+      <recent name="$PROJECT_DIR$/roles/grafana_install" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a4637bb-7e4e-4c7f-af87-e1ecda6208e7" name="Default Changelist" comment="" />
+      <created>1566469220099</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1566469220099</updated>
+      <workItem from="1566469221537" duration="1521000" />
+      <workItem from="1566541059504" duration="212000" />
+      <workItem from="1566541485351" duration="1579000" />
+      <workItem from="1566808768945" duration="19754000" />
+      <workItem from="1566989052799" duration="16725000" />
+      <workItem from="1567417191734" duration="4327000" />
+      <workItem from="1567491175924" duration="613000" />
+      <workItem from="1567503827417" duration="2000" />
+      <workItem from="1567563042253" duration="12000" />
+      <workItem from="1567565665392" duration="7209000" />
+      <workItem from="1567757795363" duration="1070000" />
+      <workItem from="1568197733090" duration="1555000" />
+      <workItem from="1568269908014" duration="1453000" />
+      <workItem from="1568284525947" duration="1252000" />
+      <workItem from="1568296229759" duration="1012000" />
+      <workItem from="1568599342941" duration="6138000" />
+      <workItem from="1568948460601" duration="4258000" />
+      <workItem from="1569203885184" duration="3318000" />
+      <workItem from="1569395641604" duration="8568000" />
+      <workItem from="1569746217882" duration="1212000" />
+      <workItem from="1570879913745" duration="397000" />
+      <workItem from="1570880319277" duration="1470000" />
+      <workItem from="1571017699885" duration="6502000" />
+      <workItem from="1571628604564" duration="15745000" />
+      <workItem from="1571889374848" duration="2675000" />
+      <workItem from="1571912213580" duration="210000" />
+      <workItem from="1571967529945" duration="48061000" />
+      <workItem from="1572866074440" duration="469000" />
+      <workItem from="1572878421653" duration="34067000" />
+      <workItem from="1573796987786" duration="4460000" />
+      <workItem from="1574221741372" duration="42357000" />
+      <workItem from="1574924765440" duration="5642000" />
+      <workItem from="1575369700844" duration="5199000" />
+      <workItem from="1575601166198" duration="1466000" />
+      <workItem from="1575614725917" duration="1213000" />
+      <workItem from="1575856442277" duration="11612000" />
+      <workItem from="1576138711007" duration="2160000" />
+      <workItem from="1576205551894" duration="4523000" />
+      <workItem from="1576460146850" duration="2626000" />
+      <workItem from="1576482053309" duration="6901000" />
+    </task>
+    <task id="LOCAL-00020" summary="add grafana install">
+      <created>1568957451608</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1568957451608</updated>
+    </task>
+    <task id="LOCAL-00021" summary="add grafana install">
+      <created>1569203928931</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1569203928931</updated>
+    </task>
+    <task id="LOCAL-00022" summary="add grafana install">
+      <created>1569204005485</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1569204005486</updated>
+    </task>
+    <task id="LOCAL-00023" summary="add grafana install">
+      <created>1569210689486</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1569210689486</updated>
+    </task>
+    <task id="LOCAL-00024" summary="raid_config update">
+      <created>1569398209545</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1569398209545</updated>
+    </task>
+    <task id="LOCAL-00025" summary="updata:items&#10;redis &#10;init &#10;zabbix">
+      <created>1570880137840</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1570880137840</updated>
+    </task>
+    <task id="LOCAL-00026" summary="clickhouse_export更新">
+      <created>1571645468512</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1571645468512</updated>
+    </task>
+    <task id="LOCAL-00027" summary="check update">
+      <created>1571799863330</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1571799863330</updated>
+    </task>
+    <task id="LOCAL-00028" summary="oss check update">
+      <created>1571829105639</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1571829105639</updated>
+    </task>
+    <task id="LOCAL-00029" summary="oss check update">
+      <created>1571829422573</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1571829422573</updated>
+    </task>
+    <task id="LOCAL-00030" summary="sys_opt update">
+      <created>1571898639489</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1571898639489</updated>
+    </task>
+    <task id="LOCAL-00031" summary="dataflow-init update es-init">
+      <created>1571971378763</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1571971378764</updated>
+    </task>
+    <task id="LOCAL-00032" summary="dataflow-init update es-init">
+      <created>1571971652656</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1571971652656</updated>
+    </task>
+    <task id="LOCAL-00033" summary="dataflow-init update es-init">
+      <created>1571995147539</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1571995147539</updated>
+    </task>
+    <task id="LOCAL-00034" summary="jdk check update&#10;tabix_install update&#10;nginx_tabix and nginx_sftp update">
+      <created>1571995202612</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1571995202612</updated>
+    </task>
+    <task id="LOCAL-00035" summary="raid_config and dataflow_init update">
+      <created>1572258110888</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1572258110889</updated>
+    </task>
+    <task id="LOCAL-00036" summary="raid_config and dataflow_init update">
+      <created>1572321386101</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1572321386101</updated>
+    </task>
+    <task id="LOCAL-00037" summary="oss update">
+      <created>1572321490048</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1572321490048</updated>
+    </task>
+    <task id="LOCAL-00038" summary="oss update">
+      <created>1572325282040</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1572325282040</updated>
+    </task>
+    <task id="LOCAL-00039" summary="oss update and housekeeping add">
+      <created>1572343767825</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1572343767825</updated>
+    </task>
+    <task id="LOCAL-00040" summary="codis_install add">
+      <created>1572406620499</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1572406620500</updated>
+    </task>
+    <task id="LOCAL-00041" summary="codis_install add">
+      <created>1572406631118</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1572406631118</updated>
+    </task>
+    <task id="LOCAL-00042" summary="dataflow_kafka2ck add">
+      <created>1572422967086</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1572422967086</updated>
+    </task>
+    <task id="LOCAL-00043" summary="dataflow_kafka2ck add">
+      <created>1572430113180</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1572430113180</updated>
+    </task>
+    <task id="LOCAL-00044" summary="housekeeping updata description">
+      <created>1572430863546</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1572430863547</updated>
+    </task>
+    <task id="LOCAL-00045" summary="housekeeping updata description">
+      <created>1572431199833</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1572431199833</updated>
+    </task>
+    <task id="LOCAL-00046" summary="zabbix-server update">
+      <created>1572519262821</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1572519262821</updated>
+    </task>
+    <task id="LOCAL-00047" summary="dataflow_kafka2ck update">
+      <created>1572586651089</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1572586651090</updated>
+    </task>
+    <task id="LOCAL-00048" summary="dataflow_kafka2ck update">
+      <created>1572592946554</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1572592946554</updated>
+    </task>
+    <task id="LOCAL-00049" summary="dataflow_kafka2ck update">
+      <created>1572597468126</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1572597468126</updated>
+    </task>
+    <task id="LOCAL-00050" summary="dataflow_kafka2ck update">
+      <created>1572597629511</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1572597629512</updated>
+    </task>
+    <task id="LOCAL-00051" summary="add httpcontent&#10;dataflow_kafka2ck update">
+      <created>1572839008682</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1572839008682</updated>
+    </task>
+    <task id="LOCAL-00052" summary="add content2es&#10;httpcontent update var and template&#10;kafka2ck update var and template&#10;zabbix update task and add var&#10;update sys_opt">
+      <created>1573031017599</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1573031017599</updated>
+    </task>
+    <task id="LOCAL-00053" summary="update content2es">
+      <created>1573031131419</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1573031131420</updated>
+    </task>
+    <task id="LOCAL-00054" summary="httpcontent and content2es update">
+      <created>1573115196437</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1573115196438</updated>
+    </task>
+    <task id="LOCAL-00055" summary="add content2kafka">
+      <created>1573115275013</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1573115275013</updated>
+    </task>
+    <task id="LOCAL-00056" summary="add message2kafka">
+      <created>1573178041262</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1573178041263</updated>
+    </task>
+    <task id="LOCAL-00057" summary="update raid config&#10;add ceph_new">
+      <created>1573554227030</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1573554227030</updated>
+    </task>
+    <task id="LOCAL-00058" summary="add grafana json and tools">
+      <created>1573797291029</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1573797291030</updated>
+    </task>
+    <task id="LOCAL-00059" summary="add kafka2es">
+      <created>1573803541588</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1573803541589</updated>
+    </task>
+    <task id="LOCAL-00060" summary="update kafka2ck voip_log">
+      <created>1574662435068</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1574662435070</updated>
+    </task>
+    <task id="LOCAL-00061" summary="update kafka2ck datadir">
+      <created>1574663049630</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1574663049631</updated>
+    </task>
+    <task id="LOCAL-00062" summary="update kafka2cktest datadir sh&#10;update dataflow_init ck sql">
+      <created>1574763992186</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1574763992186</updated>
+    </task>
+    <task id="LOCAL-00063" summary="update dataflow_message2kafka task/main.yml">
+      <created>1574930465641</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1574930465642</updated>
+    </task>
+    <task id="LOCAL-00064" summary="update dataflow_message2kafka task/main.yml start.sh">
+      <created>1574936326866</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1574936326866</updated>
+    </task>
+    <task id="LOCAL-00065" summary="update dataflow_httpcpntent start*.sh">
+      <created>1574939408501</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1574939408501</updated>
+    </task>
+    <task id="LOCAL-00066" summary="update ck_replica var #">
+      <created>1576142303469</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1576142303469</updated>
+    </task>
+    <task id="LOCAL-00067" summary="update hosts elasticsearch.yml  ingest=&quot;true&quot;">
+      <created>1576226838175</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1576226838176</updated>
+    </task>
+    <task id="LOCAL-00068" summary="update hosts elasticsearch.yml  ingest=&quot;true&quot;">
+      <created>1576460172679</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1576460172679</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="raid_config and dataflow_init update" />
+    <MESSAGE value="oss update" />
+    <MESSAGE value="oss update and housekeeping add" />
+    <MESSAGE value="codis_install add" />
+    <MESSAGE value="dataflow_kafka2ck add" />
+    <MESSAGE value="housekeeping updata description" />
+    <MESSAGE value="zabbix-server update" />
+    <MESSAGE value="dataflow_kafka2ck update" />
+    <MESSAGE value="add httpcontent&#10;dataflow_kafka2ck update" />
+    <MESSAGE value="add content2es&#10;httpcontent update var and template&#10;kafka2ck update var and template&#10;zabbix update task and add var&#10;update sys_opt" />
+    <MESSAGE value="update content2es" />
+    <MESSAGE value="httpcontent and content2es update" />
+    <MESSAGE value="add content2kafka" />
+    <MESSAGE value="add message2kafka" />
+    <MESSAGE value="update raid config&#10;add ceph_new" />
+    <MESSAGE value="add grafana json and tools" />
+    <MESSAGE value="add kafka2es" />
+    <MESSAGE value="update kafka2ck voip_log" />
+    <MESSAGE value="update kafka2ck datadir" />
+    <MESSAGE value="update kafka2cktest datadir sh&#10;update dataflow_init ck sql" />
+    <MESSAGE value="update dataflow_message2kafka task/main.yml" />
+    <MESSAGE value="update dataflow_message2kafka task/main.yml start.sh" />
+    <MESSAGE value="update dataflow_httpcpntent start*.sh" />
+    <MESSAGE value="update ck_replica var #" />
+    <MESSAGE value="update hosts elasticsearch.yml  ingest=&quot;true&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="update hosts elasticsearch.yml  ingest=&quot;true&quot;" />
+  </component>
+</project>

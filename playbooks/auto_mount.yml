@@ -1,0 +1,6 @@
+- name: auto mount
+  hosts: "{{hosts}}"
+  remote_user: root
+  roles:
+  - auto_mount
+  tags: mount

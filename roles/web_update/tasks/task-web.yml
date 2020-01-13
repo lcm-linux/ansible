@@ -1,0 +1,26 @@
+- name: create projectmanager bak dir
+  file: path={{projectmanager_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup projectmanager
+  shell: |
+    tar -zcvf {{projectmanager_path}}_`date '+%Y_%m_%d'`.tar.gz {{projectmanager_path}}/dist
+    mv {{projectmanager_path}}_`date '+%Y_%m_%d'`.tar.gz {{projectmanager_path}}/../bak
+    rm -rf {{projectmanager_path}}/dist
+- name: copy projectmanager package
+  unarchive: src={{projectmanager_service}}.tar.gz dest={{projectmanager_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/projectmanager_dns_update.sh" dest={{projectmanager_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start projectmanager service
+  ignore_errors: True
+  shell: |
+    cd {{projectmanager_path}}/dist/
+    /bin/sh projectmanager_dns_update.sh

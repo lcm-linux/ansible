@@ -1,0 +1,6 @@
+- name: Install infopublish
+  hosts: infopublish_hosts
+  remote_user: root
+  roles:
+  - infopublish_install
+  tags: infopublish

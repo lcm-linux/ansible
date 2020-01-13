@@ -1,0 +1,6 @@
+- name: Install personControl
+  hosts: personControl_hosts
+  remote_user: root
+  roles:
+  - personControl_install
+  tags: personControl

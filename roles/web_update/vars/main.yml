@@ -1,0 +1,179 @@
+##############################################################################################
+################ 以下为国家中心部署信息，按需修改  ###########################################
+##############################################################################################
+
+#远端业务系统服务器中部署程序包的目录
+base_path: /opt/k007-web
+#现场替换任务管理域名使用
+new_task_dns: da-task.cisp.com
+#现场域名替换使用
+new_dns: da.cisp.com
+#现场替换二楼大屏控制端域名使用
+new_screencontrol_sec_dns: da-screen-control-sec.cisp.com
+#现场替换一楼大屏控制端域名使用
+new_screencontrol_dns: da-screen-control.cisp.com
+#现场替换一楼大屏系统端域名使用
+new_screenmanager_dns: da-screen-system.cisp.com
+#现场替换一楼大屏展示端域名使用
+new_screen_web_dns: da-screen-web.cisp.com
+#现场替换二楼大屏展示端域名使用
+new_screen_web_sec_dns: da-screen-web-sec.cisp.com
+#现场替换综合研判平台域名使用
+new_integratedpolice_dns: da-integratedpolice.cisp.com
+
+#############################################################################################
+############### 以下为各个业务系统部署路径以及包名，不是必改项，可按需修改  #################
+#############################################################################################
+
+#国内PE环境拿包替换域名使用
+pe_dns: k007-pe.baifendian.com
+#国内PE替换二楼大屏控制端域名使用
+pe_screencontrol_sec_dns: k007-screen-control-sec-pe.baifendian.com
+#国内PE替换一楼大屏控制端域名使用
+pe_screencontrol_dns: k007-screen-control-pe.baifendian.com
+#国内PE替换一楼大屏系统端域名使用
+pe_screenmanager_dns: k007-screen-system-pe.baifendian.com
+#国内PE替换一楼大屏展示端域名使用
+pe_screen_web_dns: k007-screen-web-pe.baifendian.com
+#国内PE替换二楼大屏展示端域名使用
+pe_screen_web_sec_dns: k007-screen-web-sec-pe.baifendian.com
+#国内PE替换综合研判平台域名使用
+pe_integratedpolice_dns: k007-integratedpolice-pe.baifendian.com
+
+
+#国内KE环境拿包替换域名使用
+ke_dns: k007-ke.baifendian.com
+#国内KE替换二楼大屏控制端域名使用
+ke_screencontrol_sec_dns: k007-screen-control-sec-ke.baifendian.com
+#国内KE替换一楼大屏控制端域名使用
+ke_screencontrol_dns: k007-screen-control-ke.baifendian.com
+#国内KE替换一楼大屏系统端域名使用
+ke_screenmanager_dns: k007-screen-system-ke.baifendian.com
+#国内KE替换一楼大屏展示端域名使用
+ke_screen_web_dns: k007-screen-web-ke.baifendian.com
+#国内KE替换二楼大屏展示端域名使用
+ke_screen_web_sec_dns: k007-screen-web-sec-ke.baifendian.com
+#国内KE替换综合研判平台域名使用
+ke_integratedpolice_dns: k007-integratedpolice-ke.baifendian.com
+
+
+
+#集成门户前端路径
+portal_path: /opt/k007-web/portal-web
+#集成门户前端升级包前缀
+portal_service: portal-web
+
+#治安警种前端路径
+security_path: /opt/k007-web/securitypolice-web
+#治安警种前端升级包前缀
+security_service: securitypolice-web
+
+#流程引擎前端路径
+flowdesign_path: /opt/k007-web/jbpm-web
+#流程引擎前端升级包前缀
+flowdesign_service: jbpm-web
+
+#电子档案前端路径
+archive_path: /opt/k007-web/archive-web
+#电子档案前端升级包前缀
+archive_service: archive-web
+
+#串并案前端路径
+casejoin_path: /opt/k007-web/case-web
+#串并案前端升级包前缀
+casejoin_service: case-web
+
+#比对分析前端路径
+comp_path: /opt/k007-web/comp-web
+#比对分析前端升级包前缀
+comp_service: comp-web
+
+#动态本体前端路径
+config_path: /opt/k007-web/config-web
+#动态本体前端升级包前缀
+config_service: config-web
+
+#犯罪研判平台前端路径
+criminal_path: /opt/k007-web/platform-web
+#犯罪研判平台前端升级包前缀
+criminal_service: platform-web
+
+#重大事件预警前端路径
+eventwarning_path: /opt/k007-web/alertevent-web
+#重大事件预警前端升级包前缀
+eventwarning_service: alertevent-web
+
+#情报发布前端路径
+infopublish_path: /opt/k007-web/release-web
+#情报发布前端升级包前缀
+infopublish_service: release-web
+
+#情报分析前端路径
+information_path: /opt/k007-web/analysis-web
+#情报分析前端升级包前缀
+information_service: analysis-web
+
+#网络情报分析前端路径
+networkinfo_path: /opt/k007-web/networkanalysis-web
+#网络情报分析前端升级包前缀
+networkinfo_service: networkanalysis-web
+
+#多媒体服务前端路径
+oss_path: /opt/k007-web/oss-web
+#多媒体服务前端升级包前缀
+oss_service: oss-web
+
+#重点人员管控前端路径
+personcontrol_path: /opt/k007-web/monitor-web
+#重点人员管控前端升级包前缀
+personcontrol_service: monitor-web
+
+#任务管理前端路径
+projectmanager_path: /opt/k007-web/task-web
+#任务管理前端升级包前缀
+projectmanager_service: task-web
+
+#情报识别前端路径
+recognition_path: /opt/k007-web/discover-web
+#情报识别前端升级包前缀
+recognition_service: discover-web
+
+#系统管理前端路径
+system_path: /opt/k007-web/system-web
+#系统管理前端升级包前缀
+system_service: system-web
+
+#受控对象前端路径
+controlledbject_path: /opt/k007-web/controlledobject-web
+#受控对象前端升级包前缀
+controlledbject_service: controlledobject-web
+
+#专题分析前端路径
+bi_path: /opt/k007-web/bi-web
+#专题分析前端升级包前缀
+bi_service: bi-web
+
+#综合研判平台前端路径
+integratedpolice_path: /opt/k007-web/integratedpolice-web
+#综合研判平台前端升级包前缀
+integratedpolice_service: integratedpolice-web
+
+#一楼大屏控制端路径
+screencontrol_path: /opt/k007-web/screencontrol-web
+#一楼大屏控制端端升级包前缀
+screencontrol_service: screencontrol-web
+
+#二楼大屏控制端路径
+screencontrol_sec_path: /opt/k007-web/screencontrol-web-sec
+#一楼大屏控制端端升级包前缀
+screencontrol_sec_service: screencontrol-web-sec
+
+#一楼大屏系统端路径
+screensystem_path: /opt/k007-web/screensystem-web
+#一楼大屏系统端升级包前缀
+screensystem_service: screensystem-web
+
+#一楼大屏展示端路径
+screen_path: /opt/k007-web/screen-web
+#一楼大屏展示端升级包前缀
+screen_service: screen-web

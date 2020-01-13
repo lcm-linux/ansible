@@ -1,0 +1,26 @@
+- name: create criminal bak dir
+  file: path={{criminal_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup criminal
+  shell: |
+    tar -zcvf {{criminal_path}}_`date '+%Y_%m_%d'`.tar.gz {{criminal_path}}/dist
+    mv {{criminal_path}}_`date '+%Y_%m_%d'`.tar.gz {{criminal_path}}/../bak
+    rm -rf {{criminal_path}}/dist
+- name: copy criminal package
+  unarchive: src={{criminal_service}}.tar.gz dest={{criminal_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/criminal_dns_update.sh" dest={{criminal_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start criminal service
+  ignore_errors: True
+  shell: |
+    cd {{criminal_path}}/dist/
+    /bin/sh criminal_dns_update.sh

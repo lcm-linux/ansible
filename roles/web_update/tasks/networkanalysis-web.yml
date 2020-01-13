@@ -1,0 +1,26 @@
+- name: create networkinfo bak dir
+  file: path={{networkinfo_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup networkinfo
+  shell: |
+    tar -zcvf {{networkinfo_path}}_`date '+%Y_%m_%d'`.tar.gz {{networkinfo_path}}/dist
+    mv {{networkinfo_path}}_`date '+%Y_%m_%d'`.tar.gz {{networkinfo_path}}/../bak
+    rm -rf {{networkinfo_path}}/dist
+- name: copy networkinfo package
+  unarchive: src={{networkinfo_service}}.tar.gz dest={{networkinfo_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/networkinfo_dns_update.sh" dest={{networkinfo_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start networkinfo service
+  ignore_errors: True
+  shell: |
+    cd {{networkinfo_path}}/dist/
+    /bin/sh networkinfo_dns_update.sh

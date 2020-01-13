@@ -1,0 +1,63 @@
+---
+# tasks file for zookeeper_install
+- name: create dirtory
+  shell: mkdir -p /opt/k007
+- name: unpack the apollo file
+  unarchive: src=/etc/ansible/files/apollo-1.3.0.tar.gz dest=/opt/k007/ copy=yes
+- name:  user check
+  shell: cat /etc/passwd
+  register: info
+- name: user delete
+  shell: userdel -rf k007  && rm -rf /var/spool/mail/k007
+  when: info.stdout.find('k007') != -1
+- name: create user
+  shell: useradd k007
+- name: install
+  shell: |
+    chown -R k007:k007 /opt/k007
+- name: config01
+  template: src=templates/apollo-env.properties dest=/opt/k007/apollo-1.3.0/portal/config/apollo-env.properties owner=k007 group=k007 mode=0644
+- name: config02  
+  template: src=templates/portal-application-github.properties dest=/opt/k007/apollo-1.3.0/portal/config/application-github.properties owner=k007 group=k007 mode=0644
+- name: config03  
+  template: src=templates/application-github.properties dest=/opt/k007/apollo-1.3.0/stg/admin-service/config/application-github.properties owner=k007 group=k007 mode=0644
+- name: config04    
+  template: src=templates/application-github.properties dest=/opt/k007/apollo-1.3.0/stg/config-service/config/application-github.properties owner=k007 group=k007 mode=0644
+
+- name: start apollo-portal
+  shell: |
+    su - k007 -c "sh /opt/k007/apollo-1.3.0/portal/scripts/startup.sh "
+- name: Check if apollo-portal is accessible
+  wait_for:
+    host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+    port: 50001
+    state: started
+    delay: 10
+    #timeout时间一定要大于上面的delay时间，否则会出现错误的检测结果
+    timeout: 60
+    connect_timeout: 5
+
+- name: start admin-service
+  shell: |
+    su - k007 -c "sh /opt/k007/apollo-1.3.0/stg/admin-service/scripts/startup.sh "
+- name: Check if admin-service is accessible
+  wait_for:
+    host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+    port: 28002
+    state: started
+    delay: 10
+    timeout: 60
+    connect_timeout: 5
+
+- name: start config-service
+  shell: |
+    su - k007 -c "sh /opt/k007/apollo-1.3.0/stg/config-service/scripts/startup.sh "
+- name: Check if config-service is accessible
+  wait_for:
+    host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+    port: 21002
+    state: started
+    delay: 10
+    timeout: 60
+    connect_timeout: 5
+

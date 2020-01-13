@@ -1,0 +1,111 @@
+#nginx版本
+nginx_version: nginx-1.13.4-1.el7.ngx.x86_64
+#域名前缀，按需修改
+nginx_begin: da
+#域名中缀，按需修改
+nginx_mid: -pro
+#域名后缀，按需修改
+nginx_end: cisp.com
+#前端放置路径
+web_path: /opt/k007-web
+#########################################################################
+#########################################################################
+system_hosts: 172.24.4.41
+archiveservice_hosts: 172.24.4.41
+portal_hosts: 172.24.4.42
+eventwarning_hosts: 172.24.4.41
+recognition_hosts: 172.24.4.41
+information_hosts: 172.24.4.43
+networkInfo_hosts: 172.24.4.41
+casejoin_hosts: 172.24.4.41
+personControl_hosts: 172.24.4.41
+bi_hosts: 172.24.4.41
+infopublish_hosts: 172.24.4.42
+criminalplatform_hosts: 172.24.4.42
+compservice_hosts: 172.24.4.42
+flowdesign_hosts: 172.24.4.42
+projectManager_hosts: 172.24.4.43
+securitypolice_hosts: 172.24.4.42
+ossService_hosts: 172.24.4.42
+warehoureService_hosts: 172.24.4.43
+dailyreport_hosts: 172.24.4.43
+controlledObject_hosts: 172.24.4.43
+xxl_job_hosts: 172.24.4.42
+#########################################################################
+##########################################################################
+
+#集成门户前端升级包前缀
+portal_service: portal-web
+
+#治安警种前端升级包前缀
+security_service: securitypolice-web
+
+#流程引擎前端升级包前缀
+flowdesign_service: jbpm-web
+
+#电子档案前端升级包前缀
+archive_service: archive-web
+
+#串并案前端升级包前缀
+casejoin_service: case-web
+
+#比对分析前端升级包前缀
+comp_service: comp-web
+
+#动态本体前端升级包前缀
+config_service: config-web
+
+#犯罪研判平台前端升级包前缀
+criminal_service: platform-web
+
+#重大事件预警前端升级包前缀
+eventwarning_service: alertevent-web
+
+#情报发布前端升级包前缀
+infopublish_service: release-web
+
+#情报分析前端升级包前缀
+information_service: analysis-web
+
+#网络情报分析前端升级包前缀
+networkinfo_service: networkanalysis-web
+
+#多媒体服务前端升级包前缀
+oss_service: oss-web
+
+#重点人员管控前端升级包前缀
+personcontrol_service: monitor-web
+
+#任务管理前端升级包前缀
+projectmanager_service: task-web
+
+#情报识别前端升级包前缀
+recognition_service: discover-web
+
+#系统管理前端升级包前缀
+system_service: system-web
+
+#受控对象前端升级包前缀
+controlledbject_service: controlledobject-web
+
+#专题分析前端升级包前缀
+bi_service: bi-web
+
+#综合研判平台前端升级包前缀
+integratedpolice_service: integratedpolice-web
+
+#一楼大屏控制端端升级包前缀
+screencontrol_service: screencontrol-web
+
+#一楼大屏控制端端升级包前缀
+screencontrol_sec_service: screencontrol-web-sec
+
+#一楼大屏系统端升级包前缀
+screensystem_service: screensystem-web
+
+#一楼大屏展示端升级包前缀
+screen_service: screen-web
+
+
+#警务站前端升级包前缀
+policestations_service: policestations-web

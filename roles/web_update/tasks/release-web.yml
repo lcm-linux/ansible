@@ -1,0 +1,30 @@
+- name: create infopublish bak dir
+  file: path={{infopublish_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup infopublish
+  shell: |
+    tar -zcvf {{infopublish_path}}_`date '+%Y_%m_%d'`.tar.gz {{infopublish_path}}/dist
+    mv {{infopublish_path}}_`date '+%Y_%m_%d'`.tar.gz {{infopublish_path}}/../bak
+    rm -rf {{infopublish_path}}/dist
+- name: copy infopublish package
+  unarchive: src={{infopublish_service}}.tar.gz dest={{infopublish_path}}
+- name:
+  shell:
+    sleep 5
+- name: change infopublish profile
+  lineinfile: 
+    path: "{{infopublish_path}}/dist/app.js" 
+    regexp: '^(.*)前端(.*)'
+    line: "  urlDomain = 'urlDomain_agKW8Ph6LXkreq5J'; // 前端访问后端域名"
+    backrefs: yes
+- name: copy templates
+  template: src="templates/infopublish_dns_update.sh" dest={{infopublish_path}}/dist owner=k007 group=k007 mode=0644
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start infopublish service
+  ignore_errors: True
+  shell: |
+    cd {{infopublish_path}}/dist/
+    /bin/sh infopublish_dns_update.sh

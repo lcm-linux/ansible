@@ -1,0 +1,6 @@
+- name: Install system
+  hosts: system_hosts
+  remote_user: root
+  roles:
+  - system_install
+  tags: system

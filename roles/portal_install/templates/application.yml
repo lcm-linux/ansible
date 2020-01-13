@@ -1,0 +1,56 @@
+#属性配置文件的位置
+#spring会从classpath下的/config目录或者classpath的根目录查找application.properties或application.yml。/config优先于classpath根目录
+# Tomcat
+server:
+    tomcat:
+        uri-encoding: UTF-8
+        max-threads: 1000
+        min-spare-threads: 30
+    port: 80
+
+# mysql
+spring:
+    # 环境 dev|test|pro
+    profiles:
+        active: fat
+    http:
+        multipart:
+        max-file-size: 100MB
+        max-request-size: 100MB
+        enabled: true
+    # 指定静态资源的路径
+    resources:
+        static-locations: classpath:/static/,classpath:/views/
+    messages:
+      basename: i18n/messages
+      cache-seconds: 3600
+    jackson:
+      time-zone: {{ zone }}
+
+# Mybatis配置
+mybatis:
+    mapperLocations: classpath:mapper/**/*.xml
+    configLocation: classpath:mybatis.xml
+
+#配置日志
+logging:
+    config: classpath:logback-spring.xml
+
+#---------- nation config ----------#
+#LOCATION CODE 例如：国家中心：NA；首都中心：CA；省中心：AP  BP  CP  DP；
+locationSign: NA
+#NATION CODE
+nationSign: NA
+#local is nation
+isNation: true
+
+sequence.mode: ${sequenceMode:codis} #codis/db
+
+#配置中心配置
+apollo:
+  bootstrap:
+    enabled: true
+    namespaces: application,k007.portal,k007.redis,k007.systemmanager,k007.mysql,k007.oss,k007.service_address
+  cacheDir: {{ cacheDir }}
+app:
+  id: k007-portal

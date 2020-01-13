@@ -1,0 +1,26 @@
+- name: create oss bak dir
+  file: path={{oss_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup oss
+  shell: |
+    tar -zcvf {{oss_path}}_`date '+%Y_%m_%d'`.tar.gz {{oss_path}}/dist
+    mv {{oss_path}}_`date '+%Y_%m_%d'`.tar.gz {{oss_path}}/../bak
+    rm -rf {{oss_path}}/dist
+- name: copy oss package
+  unarchive: src={{oss_service}}.tar.gz dest={{oss_path}}
+- name:
+  shell:
+    sleep 5
+
+- name: copy templates
+  template: src="templates/oss_dns_update.sh" dest={{oss_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start oss service
+  ignore_errors: True
+  shell: |
+    cd {{oss_path}}/dist/
+    /bin/sh oss_dns_update.sh

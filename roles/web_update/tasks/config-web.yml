@@ -1,0 +1,40 @@
+- name: create config bak dir
+  file: path={{config_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup config
+  shell: |
+    tar -zcvf {{config_path}}_`date '+%Y_%m_%d'`.tar.gz {{config_path}}/dist
+    mv {{config_path}}_`date '+%Y_%m_%d'`.tar.gz {{config_path}}/../bak
+    rm -rf {{config_path}}/dist
+- name: copy config package
+  unarchive: src={{config_service}}.tar.gz dest={{config_path}}
+- name:
+  shell:
+    sleep 5
+
+#- name: replace config profile
+#  replace:
+#    path: "{{config_path}}/dist/install.sh"
+#    regexp: "k007-te.baifendian.com"
+#    replace: "da.cisp.com"
+#    backup: yes
+
+- name: change config profile
+  lineinfile: 
+    path: "{{config_path}}/dist/index.html" 
+    regexp: '^(.*)https(.*)'
+    state: absent
+    backrefs: yes
+    backup: yes
+
+- name: copy templates
+  template: src="templates/config_dns_update.sh" dest={{config_path}}/dist owner=k007 group=k007 mode=0644
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start config service
+  ignore_errors: True
+  shell: |
+    cd {{config_path}}/dist/
+    /bin/sh config_dns_update.sh

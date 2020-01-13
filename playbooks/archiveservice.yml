@@ -1,0 +1,6 @@
+- name: Install archiveservice
+  hosts: archiveservice_hosts
+  remote_user: root
+  roles:
+  - archiveservice_install
+  tags: archiveservice

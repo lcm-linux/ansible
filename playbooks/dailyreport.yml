@@ -1,0 +1,6 @@
+- name: Install dailyreport
+  hosts: dailyreport_hosts
+  remote_user: root
+  roles:
+  - dailyreport_install
+  tags: dailyreport

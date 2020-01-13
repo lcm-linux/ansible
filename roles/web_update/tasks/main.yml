@@ -1,0 +1,46 @@
+#任务管理前端
+- include: task-web.yml
+#系统管理前端
+- include: system-web.yml
+#流程设计中心前端
+- include: flowdesign-web.yml
+#重大事件预警前端
+- include: alertevent-web.yml
+#情报分析前端
+- include: analysis-web.yml
+#电子档案前端
+- include: archive-web.yml
+#专题分析前端
+- include: bi-web.yml
+#串并案前端
+- include: case-web.yml
+#比对分析前端
+- include: comp-web.yml
+#动态本体前端
+- include: config-web.yml
+#受控对象前端
+- include: controlledbject-web.yml
+#情报识别前端
+- include: discover-web.yml
+#综合研判平台前端
+- include: integratedpolice-web.yml
+#重点人员管控前端
+- include: monitor-web.yml
+#网络情报分析前端
+- include: networkanalysis-web.yml
+#多媒体服务前端
+- include: oss-web.yml
+#犯罪研判平台前端
+- include: platform-web.yml
+#集成门户前端
+- include: portal-web.yml
+#情报发布前端
+- include: release-web.yml
+#治安警种前端
+- include: securitypolice-web.yml
+#一楼大屏控制端前端
+#- include: screencontrol-web.yml
+#二楼大屏控制端前端
+#- include: screencontrol-web-sec.yml
+#一楼大屏系统前端
+#- include: screensystem-web.yml

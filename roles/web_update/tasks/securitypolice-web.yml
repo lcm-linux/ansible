@@ -1,0 +1,32 @@
+- name: create security bak dir
+  file: path={{security_path}}/../bak state=directory owner=k007 group=k007 mode=0755
+- name: bakup security
+  shell: |
+    tar -zcvf {{security_path}}_`date '+%Y_%m_%d'`.tar.gz {{security_path}}/dist
+    mv {{security_path}}_`date '+%Y_%m_%d'`.tar.gz {{security_path}}/../bak
+    rm -rf {{security_path}}/dist
+- name: copy security package
+  unarchive: src={{security_service}}.tar.gz dest={{security_path}}
+- name:
+  shell:
+    sleep 5
+
+#- name: replace security profile
+#  replace:
+#    path: "{{security_path}}/dist/install.sh"
+#    regexp: "k007-te.baifendian.com"
+#    replace: "da.cisp.com"
+#    backup: yes
+- name: copy templates
+  template: src="templates/security_dns_update.sh" dest={{security_path}}/dist owner=k007 group=k007 mode=0644
+
+
+- name: chown
+  shell: |
+    chown k007:k007 {{base_path}} -R
+
+- name: start security service
+  ignore_errors: True
+  shell: |
+    cd {{security_path}}/dist/
+    /bin/sh security_dns_update.sh

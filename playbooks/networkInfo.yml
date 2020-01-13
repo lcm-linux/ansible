@@ -1,0 +1,6 @@
+- name: Install networkInfo
+  hosts: networkInfo_hosts
+  remote_user: root
+  roles:
+  - networkInfo_install
+  tags: networkInfo
